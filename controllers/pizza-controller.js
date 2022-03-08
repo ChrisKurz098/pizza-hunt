@@ -2,9 +2,9 @@ const { Pizza } = require('../models');
 
 const pizzaController = {
     //get all Pizzas
-    getAllPizzas(req, res) {
+    getAllPizza(req, res) {
         Pizza.find({})
-            .then(dbPizzaData => res.json(dbPizzaDatta))
+            .then(dbPizzaData => res.json(dbPizzaData))
             .catch(err => {
                 console.error(err);
                 res.status(400).json(err);
@@ -19,7 +19,7 @@ const pizzaController = {
                     res.status(404).json({ message: "There is no pizza at that ID!" });
                     return;
                 }
-                res.json(dbPizzaDatta);
+                res.json(dbPizzaData);
             })
             .catch(err => {
                 console.error(err);
@@ -43,7 +43,7 @@ const pizzaController = {
                 res.status(404).json({ message: "No pizza found at that ID"});
                 return;
             }
-            res.json(dbPizzaDatta);
+            res.json(dbPizzaData);
         })
         .catch(err => res.status(400).json(err));
     },

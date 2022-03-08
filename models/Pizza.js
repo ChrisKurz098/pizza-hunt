@@ -2,21 +2,21 @@ const { Schema, model } = require('mongoose');
 
 const PizzaSchema = new Schema({
     pizzaName: {
-        type: String
+      type: String
     },
-    createdBy: { 
-        type: String 
+    createdBy: {
+      type: String
     },
-    createdAt: { 
-        type: Date,
-        default:Date.now
+    createdAt: {
+      type: Date,
+      default: Date.now
     },
     size: {
-        type: String,
-        default: 'Large'
+      type: String,
+      default: 'Large'
     },
-    topppings: []
-});
+    toppings: []
+  });
 
 // create the Pizza model using the PizzaSchema
 const Pizza = model('Pizza', PizzaSchema);
