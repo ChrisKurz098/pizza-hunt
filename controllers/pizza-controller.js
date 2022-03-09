@@ -4,6 +4,12 @@ const pizzaController = {
     //get all Pizzas
     getAllPizza(req, res) {
         Pizza.find({})
+        .populate({
+            path: 'comments',
+            select: '-__v'
+          })
+          .select('-__v')
+          .sort({_id: -1})
             .then(dbPizzaData => res.json(dbPizzaData))
             .catch(err => {
                 console.error(err);
@@ -14,6 +20,11 @@ const pizzaController = {
     //get pizza by _id
     getPizzaById({ params }, res) {
         Pizza.findOne({ _id: params.id })
+        .populate({
+            path: 'comments',
+            select: '-__v'
+          })
+          .select('-__v')
             .then(dbPizzaData => {
                 if (!dbPizzaData) {
                     res.status(404).json({ message: "There is no pizza at that ID!" });
