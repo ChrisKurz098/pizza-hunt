@@ -66,7 +66,9 @@ const handlePizzaSubmit = event => {
       console.log(postResponse);
     })
     .catch(err => {
-      console.log(err);;
+      console.log(err);
+      //run saveRecord() from the idb.js script. Store the new pizza into the object store
+      saveRecord(formData);
     });
 };
 
